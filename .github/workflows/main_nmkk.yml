@@ -31,8 +31,9 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/src
+          name: .web
+          path: ./src
+          #path: ${{env.DOTNET_ROOT}}/src
 
   deploy:
     runs-on: windows-latest
@@ -45,7 +46,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: .net-app
+          name: .web
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
